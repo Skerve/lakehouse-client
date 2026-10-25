@@ -147,12 +147,12 @@ describe("surface", () => {
   });
 });
 
-// Every visual plot's golden cases produce is drawable by the contract's rules.
-describe("plot's golden visuals", () => {
+// Every visual of plot's test cases is drawable by the rules in docs/visual.md.
+describe("plot's test visuals", () => {
   const dir = join(import.meta.dir, "visuals");
   const names = existsSync(dir) ? readdirSync(dir).filter((name) => name.endsWith(".json")) : [];
 
-  test("are present: bun run visuals writes them from ds-tools", () => {
+  test("are present", () => {
     expect(names.length).toBeGreaterThan(50);
   });
 

@@ -1,4 +1,4 @@
-// Pins draws a plot visual (application/vnd.grasp.visual+json; ds-tools docks/tools/plot.md) as a pin toy: a fine
+// Pins draws a plot visual (application/vnd.grasp.visual+json; docs/visual.md) as a pin toy: a fine
 // rack of small pins, always all there, pressed up by a smooth surface through the cells' values — or, for a line,
 // flat sand with each series a soft ridge along its curve; every pin the same size and length, inside a faint cage
 // that is the x, y and z axes, labelled with the details. A pin without data rests at zero; data pushes it up or,

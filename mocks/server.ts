@@ -1,6 +1,6 @@
 // Serves the UI and proxies /api/{fetch,config,tools,state,file}/* with the signed-in user's bearer.
 // Tokens stay in this process; the browser only holds an HttpOnly session cookie.
-// /lab.html draws the visuals in ./visuals without signing in: plot's golden cases, written by `bun run visuals`.
+// /lab.html draws the visuals in ./visuals without signing in: plot's test cases (docs/visual.md).
 
 import { readdir } from "node:fs/promises";
 import { join } from "node:path";

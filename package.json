@@ -2,7 +2,6 @@
   "private": true,
   "scripts": {
     "dev": "bun mocks/server.ts",
-    "test": "bun test mocks",
-    "visuals": "dir=\"$PWD/mocks/visuals\" && mkdir -p \"$dir\" && rm -f \"$dir\"/*.json && cd ../ds-tools && go test ./internal/tools/plot -run TestGolden -count=1 -visuals \"$dir\""
+    "test": "bun test mocks"
   }
 }

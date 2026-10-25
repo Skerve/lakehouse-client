@@ -1,12 +1,11 @@
-# ds-lakehouse-client
+# lakehouse-client
 
-A mock Lakehouse client: browse the gold, silver and bronze layers, run SQL through ds-fetch, and plot results as a bed of pins with ds-tools' `plot`.
+A mock Lakehouse client: browse the gold, silver and bronze layers, run SQL through ds-fetch, and plot results as a bed of pins with Grasp's `plot` tool.
 
 ## Requirements
 
 - [Bun](https://bun.sh) 1.3 or newer.
-- A Grasp account, to use the app.
-- Go and [ds-tools](../ds-tools) checked out next to this repo, only to regenerate the lab's visuals.
+- A Grasp account, to use the app. The lab needs none.
 
 ## Run
 
@@ -27,7 +26,7 @@ The server keeps your tokens. The browser only gets an HttpOnly session cookie, 
 
 1. Pick a layer and a dataset. Its tabs show the overview, schema, preview and lineage.
 2. Press **Open in SQL**, or **Ask in words** and then **Draft SQL** to have one written for you. Review it, then press **Run**.
-3. Press **Pins** on the result. This sends the statement to ds-tools' `plot`, which needs to be deployed in the environment you chose.
+3. Press **Pins** on the result. This sends the statement to Grasp's `plot` tool, which needs to be deployed in the environment you chose, and draws the visual it returns ([docs/visual.md](docs/visual.md)).
 
    The result is a pin toy: a fine rack of small pins, x across and y in depth, always all there, pressed up by a smooth surface through the cells' values: it passes through every value and never swings past one. Categories stay apart as bands. An ordered x with no y, or up to 8 series, is a line drawn in sand: flat sand, the value in depth, each series a soft ridge named at its end. Every pin is the same size and length. The rack opens flat, already showing the picture in its tones, then rises out of it. A pin without data rests at zero. Data raises it by its value, on one scale for every frame, and negative values sink it below zero. One metal, toned dark for the lowest value to light for the highest, inside a faint cage that is the x, y and z axes.
 
@@ -41,13 +40,7 @@ The server keeps your tokens. The browser only gets an HttpOnly session cookie, 
 
 ## Pins lab
 
-<http://localhost:4173/lab.html> draws plot's golden cases without sign-in, to check the renderer against the contract. `?case=earth` opens a single case: Earth relief at 2°, 180 × 91 cells, one pin each.
-
-To regenerate the cases from ds-tools (written to `mocks/visuals`):
-
-```sh
-bun run visuals
-```
+<http://localhost:4173/lab.html> draws plot's test cases in `mocks/visuals` without sign-in, to check the renderer against [the contract](docs/visual.md). `?case=earth` opens a single case: Earth relief at 2°, 180 × 91 cells, one pin each.
 
 ## Test
 

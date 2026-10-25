@@ -10,7 +10,7 @@
   <body>
     <header class="top">
       <div class="brand"><span class="logo"></span>Lakehouse <span class="slash">/</span> Pins lab</div>
-      <span class="hint">plot's golden cases, drawn as the client draws a stored visual · <code>bun run visuals</code> regenerates them</span>
+      <span class="hint">plot's test cases, drawn as the client draws a stored visual</span>
     </header>
     <main id="main"><ul id="cases" class="mono"></ul></main>
     <script src="pins.js"></script>
@@ -18,7 +18,7 @@
       const list = document.getElementById("cases");
       const open = async (name) => {
         const response = await fetch(`/visuals/${encodeURIComponent(name)}.json`);
-        if (!response.ok) return alert(`No visual named ${name}: run bun run visuals.`);
+        if (!response.ok) return alert(`No visual named ${name} in mocks/visuals.`);
         const { visual, text } = await response.json();
         Pins.open({ visual, text, title: name });
       };
@@ -27,7 +27,7 @@
         .then((names) => {
           list.innerHTML = names.length
             ? names.map((name) => `<li><button class="btn subtle" data-case="${name}">${name}</button></li>`).join("")
-            : "<li>No visuals yet: run <code>bun run visuals</code>.</li>";
+            : "<li>No visuals in <code>mocks/visuals</code>.</li>";
           const wanted = new URLSearchParams(location.search).get("case");
           if (wanted) open(wanted);
         });
