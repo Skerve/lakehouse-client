@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lakehouse · AI Commons</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap"
+    />
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand"><span class="logo"></span>AI Commons <span class="slash">/</span> Lakehouse</div>
+      <nav class="nav">
+        <button data-action="view" data-view="overview">Overview</button>
+        <button data-action="view" data-view="explore">Explore</button>
+        <button data-action="view" data-view="query">Query</button>
+      </nav>
+      <button class="search" data-action="palette">
+        Search datasets, columns, ids <kbd>⌘K</kbd>
+      </button>
+      <span id="env" class="env"></span>
+      <span id="user" class="user"></span>
+      <button class="icon" data-action="theme" aria-label="Toggle theme">◐</button>
+    </header>
+    <main id="main"></main>
+    <div id="palette" class="palette" hidden></div>
+    <div id="toast" class="toast" role="status" hidden></div>
+    <script src="pins.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

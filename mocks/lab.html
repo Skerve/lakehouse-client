@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pins lab · Lakehouse</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" />
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand"><span class="logo"></span>Lakehouse <span class="slash">/</span> Pins lab</div>
+      <span class="hint">plot's golden cases, drawn as the client draws a stored visual · <code>bun run visuals</code> regenerates them</span>
+    </header>
+    <main id="main"><ul id="cases" class="mono"></ul></main>
+    <script src="pins.js"></script>
+    <script>
+      const list = document.getElementById("cases");
+      const open = async (name) => {
+        const response = await fetch(`/visuals/${encodeURIComponent(name)}.json`);
+        if (!response.ok) return alert(`No visual named ${name}: run bun run visuals.`);
+        const { visual, text } = await response.json();
+        Pins.open({ visual, text, title: name });
+      };
+      fetch("/visuals/")
+        .then((response) => response.json())
+        .then((names) => {
+          list.innerHTML = names.length
+            ? names.map((name) => `<li><button class="btn subtle" data-case="${name}">${name}</button></li>`).join("")
+            : "<li>No visuals yet: run <code>bun run visuals</code>.</li>";
+          const wanted = new URLSearchParams(location.search).get("case");
+          if (wanted) open(wanted);
+        });
+      list.addEventListener("click", (event) => {
+        const name = event.target.closest("[data-case]")?.dataset.case;
+        if (name) open(name);
+      });
+    </script>
+  </body>
+</html>
